@@ -444,7 +444,7 @@ zfs create -o mountpoint=legacy rpool/root/nixos //<2>
 zfs create -o mountpoint=legacy -o com.sun:auto-snapshot=true rpool/home //<3>
 
 zfs set compression=lz4 rpool/home //<4>
-
+zfs set atime=off rpool/home
 ----
 
 
