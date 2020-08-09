@@ -211,7 +211,7 @@ Combine this with the prefix */dev/*
 .command: wipe partitions
 [source, bash]
 ----
-sgdisk --zap-all /dev/sda
+sgdisk -Z -g /dev/sda
 ----
 
 You should get a nice terminal output that reads "GPT data structures destroyed! You may now partition the disk using fdisk or other utilities."
@@ -261,7 +261,7 @@ This works because I don't have any partitions yet. Remember to use your prefix 
 .command: Create $SDA_ID variable
 [source, bash]
 ----
-SDA_ID="$(ls /dev/disk/by-id/ | grep '^[ata]')"
+SDA_ID="$(ls /dev/disk/by-id/ | grep 'FIXME')"
 ----
 
 Lets see if we got what we want (it should be a single value):
@@ -490,6 +490,7 @@ mount $BOOT /mnt/boot
 .command : make swap
 ----
 mkswap -U swap $SWAP
+swapon /dev/sda3 (checkit)
 ----
 
 
